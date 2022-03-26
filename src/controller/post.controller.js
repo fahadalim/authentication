@@ -19,7 +19,7 @@ router.get("/",async(req,res)=>{
 });
 
 router.post("",authenticate,async(req,res)=>{
-    req.body.user_id = req.userId
+    req.body.user_id = req.userID
     try{
         const post = await Post.create(req.body)
         return res.status(200).send(post)
@@ -30,7 +30,7 @@ router.post("",authenticate,async(req,res)=>{
 });
 
 router.patch("/:id",authenticate,async(req,res)=>{
-    req.body.user_id = req.userId
+    req.body.user_id = req.userID
     try{
         const post = await Post.findByIdAndUpdate(req.params.id)
         return res.status(200).send(post)
@@ -41,7 +41,7 @@ router.patch("/:id",authenticate,async(req,res)=>{
 });
 
 router.delete("/:id",authenticate,async(req,res)=>{
-    req.body.user_id = req.userId
+    req.body.user_id = req.userID
     try{
         const post = await Post.findByIdAndDelete(req.params.id)
         return res.status(200).send(post)
